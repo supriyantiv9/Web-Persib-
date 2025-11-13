@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PERSIB BANDUNG - Maung Bandung</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pulseGlow {
+      0%, 100% { text-shadow: 0 0 10px #00bfff, 0 0 20px #007bff; }
+      50% { text-shadow: 0 0 25px #007bff, 0 0 50px #00bfff; }
+    }
+    .glow {
+      animation: pulseGlow 2s infinite;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-blue-900 to-blue-600 min-h-screen text-white font-sans">
+
+  <!-- Header -->
+  <header class="text-center py-8">
+    <img src="persib.png" alt="Logo Persib" class="w-24 mx-auto animate-bounce">
+    <h1 class="text-5xl font-extrabold glow mt-3">PERSIB BANDUNG</h1>
+    <p class="italic text-gray-200 mt-2">Maung Bandung, Kami Bersamamu!</p>
+  </header>
+
+  <!-- Menu Section -->
+  <section class="flex flex-col md:flex-row justify-center items-center gap-8 mt-10 px-6">
+    
+    <!-- Menu 1: Profil Klub -->
+    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl w-72 text-center hover:bg-white/20 transition-all shadow-lg hover:scale-105">
+      <h2 class="text-2xl font-bold mb-3">🏟️ Profil Klub</h2>
+      <p class="text-gray-200 mb-4">Kenali sejarah dan identitas Maung Bandung — kebanggaan Jawa Barat!</p>
+      <button onclick="showSection('profil')" class="bg-white text-blue-700 font-bold py-2 px-4 rounded-full hover:bg-blue-200 transition">Lihat</button>
+    </div>
+
+    <!-- Menu 2: Daftar Pemain -->
+    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl w-72 text-center hover:bg-white/20 transition-all shadow-lg hover:scale-105">
+      <h2 class="text-2xl font-bold mb-3">👥 Daftar Pemain</h2>
+      <p class="text-gray-200 mb-4">Lihat skuad terbaru Persib Bandung musim ini!</p>
+      <button onclick="showSection('pemain')" class="bg-white text-blue-700 font-bold py-2 px-4 rounded-full hover:bg-blue-200 transition">Lihat</button>
+    </div>
+
+    <!-- Menu 3: Jadwal Pertandingan -->
+    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl w-72 text-center hover:bg-white/20 transition-all shadow-lg hover:scale-105">
+      <h2 class="text-2xl font-bold mb-3">📅 Jadwal Laga</h2>
+      <p class="text-gray-200 mb-4">Jangan lewatkan laga-laga seru Persib di Liga 1!</p>
+      <button onclick="showSection('jadwal')" class="bg-white text-blue-700 font-bold py-2 px-4 rounded-full hover:bg-blue-200 transition">Lihat</button>
+    </div>
+
+  </section>
+
+  <!-- Konten Dinamis -->
+  <section id="content" class="text-center mt-12 p-6 hidden">
+    <h2 id="contentTitle" class="text-3xl font-bold mb-4"></h2>
+    <p id="contentText" class="text-gray-100 text-lg"></p>
+    <button onclick="hideSection()" class="mt-6 bg-blue-800 py-2 px-6 rounded-full hover:bg-blue-700 font-semibold">⬅️ Kembali</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-300 mt-16 pb-4">
+    SUPRIYADI PANCA PRATAMA
+  </footer>
+
+  <script>
+    const content = document.getElementById('content');
+    const contentTitle = document.getElementById('contentTitle');
+    const contentText = document.getElementById('contentText');
+
+    function showSection(menu) {
+      content.classList.remove('hidden');
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+      if (menu === 'profil') {
+        contentTitle.textContent = 'Profil Klub Persib Bandung';
+        contentText.textContent = 'Didirikan pada tahun 1933, Persib Bandung merupakan klub sepak bola legendaris asal Kota Kembang. Dikenal dengan julukan Maung Bandung, Persib memiliki basis suporter terbesar di Indonesia yang dikenal sebagai Bobotoh.';
+      } 
+      else if (menu === 'pemain') {
+        contentTitle.textContent = 'Daftar Pemain Persib (Musim 2025)';
+        contentText.textContent = 'Beberapa pemain andalan: Marc Klok, Nick Kuipers, Beckham Putra, Ezra Walian, dan Ciro Alves, Supriyadi panca pratama. Pelatih kepala: Bojan Hodak.';
+      } 
+      else if (menu === 'jadwal') {
+        contentTitle.textContent = 'Jadwal Pertandingan Persib';
+        contentText.innerHTML = '🏟️ Persib vs Arema - 10 Nov 2025<br>⚽ Persib vs Persebaya - 17 Nov 2025<br>🔥 Persib vs Persija - 24 Nov 2025<br> Persib vs Lingga manik - 30 Mei 2026.';
+      }
+    }
+
+    function hideSection() {
+      content.classList.add('hidden');
+    }
+  </script>
+
+</body>
+</html>
